@@ -1,30 +1,42 @@
-# ReadOnlySelect
+# Readonly.js
 
-jQuery plugin to make `<select>` readonly.
+> Make form controls - even <select> - readonly.
 
-## Minify:
+---
 
-Run `make`.
+The `<select>` element does not accept `readonly` attribute.
+
+**Readonly** is a wrapper that fix this.
 
 ## Usage:
 
+With no arguments, `#readonly` toggles readonly state of the element.
+
 ```javascript
-var select = $('select');
+$('input').readonly();
 ```
 
-Toggle readonly state:
+You you can also force a state by passing `true` or `false`.
 
 ```javascript
-select.readonly();
-```
-
-Force enable or disable readonly state:
-
-```javascript
-select.readonly(true);
-select.readonly(false);
+$('input').readonly(true);
 ```
 
 ## How does it work:
 
-Since HTML does not allow `<select>` to be readonly, the plugin creates a hidden input with the select's name and value and disable the select element.
+When called upon a `<input>` or `<textarea>` the plugin simply toggles its `readonly` attribute.
+
+The magic happens when we call it upon a `<select>`. To make it work we create a sham, a hidden input, right after the target, with the same name and value. Finally we disable the `<select>` to make it does not respond to the user's interaction.
+
+## License
+
+This project is licensed under [Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/).
+
+## Contribution
+
+1. Fork it
+2. Change it
+3. Commit with brief yet meaningful description
+4. Send pull request
+
+Also, you could simply register an issue, or comment in one.
