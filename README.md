@@ -1,6 +1,6 @@
 # Readonly.js
 
-> Make form controls - even <select> - readonly.
+> Make form controls - even `<select>` - readonly.
 
 ## About:
 
