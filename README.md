@@ -22,7 +22,7 @@ $('input').readonly(true);
 
 ## How does it work:
 
-When called upon a `<input>` or `<textarea>` the plugin simply toggles its `readonly` attribute.
+When called upon a `<input>` or `<textarea>` the plugin simply changes its `readonly` attribute.
 
 The magic happens when we call it upon a `<select>`. To make it work we create a sham, a hidden input, right after the target, with the same name and value. Finally we disable the `<select>` to make it does not respond to the user's interaction.
 
