@@ -2,15 +2,13 @@
 
 > Make form controls - even <select> - readonly.
 
----
+## About:
 
-The `<select>` element does not accept `readonly` attribute.
-
-**Readonly** is a wrapper that fix this.
+The `<select>` element does not accept `readonly` attribute. **Readonly** is a wrapper that fix this.
 
 ## Usage:
 
-With no arguments, `#readonly` toggles readonly state of the element.
+With no arguments, `#readonly` toggles the state of the element.
 
 ```javascript
 $('input').readonly();
