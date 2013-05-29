@@ -24,9 +24,7 @@
   }
 
   $.fn.readonly = function(state) {
-    return this.each(function(element, index) {
-      console.log(index, element);
-
+    return this.each(function(index, element) {
       element = $(element);
 
       if(state === undefined) {
