@@ -1,45 +1,65 @@
 /**
- * Readonly v1.0.0
+ * Readonly v2.0.0
  * by Arthur Corenzan <arthur@corenzan.com>
- * more on //github.com/haggen/readonly
+ * more on https://github.com/haggen/readonly
  */
-;(function($, undefined) {
+;(function(undefined) {
 
-  function readonly(element) {
-    if(element.is('select')) {
-      element.addClass('readonly').data('readonly', true).prop('disabled', true);
-      element.after('<input type="hidden" name="' + element[0].name + '" value="' + element[0].value + '" data-select-sham>');
-    } else {
-      element.prop('readonly', true);
+  function readonly(target, value) {
+    if(typeof target === 'string') {
+      target = document.querySelectorAll(target);
     }
-  }
 
-  function editable(element) {
-    if(element.is('select')) {
-      element.removeClass('readonly').removeData('readonly');
-      element.prop('disabled', false).next('[data-select-sham]').remove();
-    } else {
-      element.prop('readonly', false);
+    if(target.length === undefined) {
+      target = [target];
     }
-  }
 
-  $.fn.readonly = function(state) {
-    return this.each(function(index, element) {
-      element = $(element);
-
-      if(state === undefined) {
-        if(element.is('select')) {
-          state = !element.data('readonly');
-        } else {
-          state = !element.prop('readonly');
-        }
-      }
-
-      if(state) {
-        readonly(element);
-      } else {
-        editable(element);
-      }
+    [].forEach.call(target, function(el) {
+      var n = value === undefined ? !el.getAttribute('readonly') : value;
+      readonly[n ? 'activate' : 'deactivate'](el);
     });
+  }
+
+  readonly.activate = function(el) {
+    el.setAttribute('readonly', true);
+    el.setAttribute('disabled', true);
+
+    el.classList.add('readonly');
+
+    var checkable = /checkbox|radio/i.test(el.type);
+
+    console.log(el.nodeName, checkable);
+
+    if(!checkable || (checkable && el.checked)) {
+      var sham = document.createElement('input');
+
+      sham.name = el.name;
+      sham.type = 'hidden';
+      sham.value = el.value;
+      sham.setAttribute('data-sham', el.name);
+
+      el.parentNode.insertBefore(sham, el.nextSibling);
+    }
   };
-})(window.jQuery);
+
+  readonly.deactivate = function(el) {
+    el.setAttribute('readonly', false);
+    el.setAttribute('disabled', false);
+
+    el.classList.remove('readonly');
+
+    var sham = el.parentNode.querySelector('[data-sham="' + el.name + '"]');
+    if(sham) el.parentNode.removeChild(sham);
+  };
+
+  this.readonly = readonly;
+
+  if(this.jQuery !== undefined) {
+    this.jQuery.fn.readonly = function(value) {
+      return this.each(function() {
+        readonly(this, value);
+      });
+    };
+  }
+
+})(this);
