@@ -6,17 +6,20 @@
 ;(function(undefined) {
 
   var readonly = function(target) {
-    var sham = document.createElement('input');
-
-    sham.name = target.name;
-    sham.type = 'hidden';
-    sham.value = target.value;
-    sham.setAttribute('data-sham', target.name);
-
     target.setAttribute('disabled', true);
     target.setAttribute('readonly', true);
     target.classList.add('readonly');
-    target.parentNode.insertBefore(sham, target.nextSibling);
+
+    if (!hasSham(target)) {
+      var sham = document.createElement('input');
+
+      sham.name = target.name;
+      sham.type = 'hidden';
+      sham.value = target.value;
+      sham.setAttribute('data-sham', target.name);
+
+      target.parentNode.insertBefore(sham, target.nextSibling);
+    }
   };
 
   var editable = function(target) {
@@ -24,7 +27,7 @@
     target.removeAttribute('readonly');
     target.classList.remove('readonly');
 
-    if(target.nextSibling.getAttribute('data-sham') === target.name) {
+    if(hasSham(target)) {
       target.parentNode.removeChild(target.nextSibling);
     }
   };
@@ -47,6 +50,10 @@
         editable(el);
       }
     });
+  }
+
+  var hasSham = function (target) {
+    return target.nextSibling && target.nextSibling.getAttribute('data-sham') === target.name;
   }
 
   if(this.jQuery !== undefined) {
