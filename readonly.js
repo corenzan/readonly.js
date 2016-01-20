@@ -28,7 +28,7 @@
     target.classList.remove('readonly');
 
     if(hasSham(target)) {
-      target.parentNode.removeChild(target.nextSibling);
+      target.parentNode.removeChild(target.nextElementSibling);
     }
   };
 
@@ -53,7 +53,7 @@
   }
 
   var hasSham = function (target) {
-    return target.nextSibling && target.nextSibling.getAttribute('data-sham') === target.name;
+    return target.nextElementSibling && target.nextElementSibling.getAttribute('data-sham') === target.name;
   }
 
   if(this.jQuery !== undefined) {
