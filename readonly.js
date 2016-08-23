@@ -1,9 +1,9 @@
 /**
- * Readonly v2.1.0
+ * Readonly v2.1.1
  * by Arthur Corenzan <arthur@corenzan.com>
  * more on https://github.com/haggen/readonly
  */
-;(function(undefined) {
+;(function(root, undefined) {
 
   'use strict';
 
@@ -22,7 +22,7 @@
       return;
     }
 
-    if (shammed(target)) {
+    if (!shammed(target)) {
       var sham = document.createElement('input');
 
       sham.name = target.name;
@@ -66,13 +66,13 @@
     });
   };
 
-  if (this.jQuery !== undefined) {
-    this.jQuery.fn.readonly = function(value) {
+  if (root.jQuery !== undefined) {
+    root.jQuery.fn.readonly = function(value) {
       return this.each(function() {
         toggle(this, value);
       });
     };
   }
 
-  this.readonly = toggle;
-})();
+  root.readonly = toggle;
+})(this);
