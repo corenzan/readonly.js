@@ -4,11 +4,11 @@
 
 ## About:
 
-Won't your `<select>` elements accept the `readonly` attribute ? **Readonly.js** is a lightweight wrapper to fix that. Not only that, but you can make anything read-only with Readonly.js. Really. :D
+Won't your `<select>` elements accept the `readonly` attribute? **Readonly.js** is a lightweight wrapper to fix that. Not only that, but you can make anything read-only with Readonly.js. Really. :D
 
 ## Usage:
 
-Now with Readonly.js 2.0 you can finally drop that old bugger jQuery, or not, that's your call.
+Now with Readonly.js 2.0 you can finally drop that old bugger jQuery. Or not, it's your call.
 
 If you're using jQuery, calling `readonly` toggles the state of the element.
 
@@ -28,21 +28,24 @@ If you're not using jQuery, Readonly.js makes it a breeze:
 readonly('input, select');
 ```
 
-The first argument accepts:
+```javascript
+readonly('input, select', false);
+```
 
-- A selector
-- A single element
-- A collection of elements (Array or NodeList)
-- And even a jQuery selection
+The first argument can be:
+
+- A selector.
+- A single element.
+- A collection of elements (Array or NodeList).
+- A jQuery selection.
 
 ## License
 
-This project is licensed under [Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0/).
+This project is licensed under [MIT](LICENSE).
 
 ## Contribution
 
-1. Fork it
-2. Change it
-3. Commit it, telling what you did and why
-4. Send pull request
-5. Thank you, you're awesome
+1. Fork it and make some changes.
+2. Commit the changes, explaining what you did and why.
+4. Send a pull request.
+5. Thank you, you're awesome! ;)
