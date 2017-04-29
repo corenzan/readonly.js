@@ -2,33 +2,33 @@
 
 > Make form controls - even `<select>` - read-only.
 
-## About:
+## About
 
-Won't your `<select>` elements accept the `readonly` attribute? **Readonly.js** is a lightweight wrapper to fix that. Not only that, but you can make anything read-only with Readonly.js. Really. :D
+Won't your `<select>` elements accept the `readonly` attribute? **Readonly.js** is a lightweight wrapper to fix that.
 
-## Usage:
+## Usage
 
 Now with Readonly.js 2.0 you can finally drop that old bugger jQuery. Or not, it's your call.
 
-If you're using jQuery, calling `readonly` toggles the state of the element.
+If you're using jQuery, calling `readonly` toggles the _editable_ state of an element.
 
-```javascript
+```js
 $('input, select').readonly();
 ```
 
-You can also force the state by passing an additional argument; `true` for `readonly` or `false` for `editable`.
+You can also force the state by passing an additional argument; `true` for _read only_ or `false` for _editable_.
 
-```javascript
-readonly('input, select', true);
+```js
+$('input, select').readonly('input, select', true);
 ```
 
 If you're not using jQuery, Readonly.js makes it a breeze:
 
-```javascript
+```js
 readonly('input, select');
 ```
 
-```javascript
+```js
 readonly('input, select', false);
 ```
 
@@ -39,13 +39,20 @@ The first argument can be:
 - A collection of elements (Array or NodeList).
 - A jQuery selection.
 
+## Compatibility
+
+Readonly.js requires support for the following DOM methods:
+
+- `nextElementSibling`
+- `querySelectorAll`
+- `classList`
+
+Which should be available in the recent versions of Chrome, Firefox, Opera, Safari and since IE11.
+
+## Web Standards
+
+Have you wondered why the `readonly` attribute doesn't work in `<select>` element? Well, the whole thing is more complicated then that, but you can read all about it here: https://github.com/whatwg/html/issues/2311. You can also contribute to the web standards by joining in the conversation and making your point in favor of this feature.
+
 ## License
 
-This project is licensed under [MIT](LICENSE).
-
-## Contribution
-
-1. Fork it and make some changes.
-2. Commit the changes, explaining what you did and why.
-4. Send a pull request.
-5. Thank you, you're awesome! ;)
+This project is licensed under MIT. See [LICENSE.md](LICENSE.md) for full notice.
