@@ -16,7 +16,7 @@ If you're coming from older versions take note:
 
 ## Compatibility
 
-...
+Version 3.0.0 was rewritten with a modern syntax but we're using Babel to transpile it into a more compatible JavaScript syntax wise. We also make use of some relatively newer browser APIs like `querySelectorAll`. Anything newer than IE11 should be fine but if you run into issues please submit an issue so we can look into it.
 
 ## Usage
 
