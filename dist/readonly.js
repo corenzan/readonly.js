@@ -96,7 +96,7 @@
     if (typeof mixed === 'string') {
       mixed = document.querySelectorAll(mixed);
     } else if (mixed instanceof NodeList) {
-      mixed = Array.from(mixed);
+      mixed = [].slice.call(mixed);
     } else if (mixed instanceof HTMLElement) {
       mixed = [mixed];
     } else {
