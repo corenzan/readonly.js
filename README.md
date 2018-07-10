@@ -4,55 +4,52 @@
 
 ## About
 
-Won't your `<select>` elements accept the `readonly` attribute? **Readonly.js** is a lightweight wrapper to fix that.
+**Readonly.js** is a lightweight wrapper to fix the inconsistency of the `readonly` attribute in form controls. According to [current specifications](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-readonly) the attribute will be ignored in certain input types, and is completely void in `<select>` elements. This little helper aims to fix that. If you're curious to know more read the [Web Standards](#web-standards) section.
+
+## Upgrade to 3.x.x
+
+If you're coming from older versions take note:
+
+- The `readonly` function no longer accepts a jQuery collection as first argument.
+- The control no longer gets a class added to it. You should use the attribute selector instead. e.g. `select[readonly] { ... }`
+- Now you can keep the actual control and its surrogate (formerly known as _sham_) in sync by dispatching a `change` event on the element. .e.g `input.dispatchEvent(new Event('change'))`. This will make sure that changes to `name` and/or `value` made via JavaScript will take effect.
+
+## Compatibility
+
+...
 
 ## Usage
 
-Now with Readonly.js 2.0 you can finally drop that old bugger jQuery. Or not, it's your call.
-
-If you're using jQuery, calling `readonly` toggles the _editable_ state of an element.
-
-```js
-$('input, select').readonly();
-```
-
-You can also force the state by passing an additional argument; `true` for _read only_ or `false` for _editable_.
-
-```js
-$('input, select').readonly('input, select', true);
-```
-
-If you're not using jQuery, Readonly.js makes it a breeze:
+Only a single function is exported: `readonly`. e.g.
 
 ```js
 readonly('input, select');
 ```
 
-```js
-readonly('input, select', false);
-```
+This will toggle the read-only state of matching elements.
 
-The first argument can be:
+The first argument can be either:
 
 - A selector.
 - A single element.
-- A collection of elements (Array or NodeList).
-- A jQuery selection.
+- A collection of elements (_Array_ or _NodeList_).
 
-## Compatibility
+You can also force a state by passing an additional argument; `true` for _read-only_ or `false` for _editable_.
 
-Readonly.js requires support for the following DOM methods:
+```js
+readonly('input, select', true);
+```
 
-- `nextElementSibling`
-- `querySelectorAll`
-- `classList`
+If you're using **jQuery** it'll be installed as a plugin.
 
-Which should be available in the recent versions of Chrome, Firefox, Opera, Safari and since IE11.
+```js
+$('input, select').readonly(true);
+```
 
 ## Web Standards
 
-Have you wondered why the `readonly` attribute doesn't work in `<select>` element? Well, the whole thing is more complicated then that, but you can read all about it here: https://github.com/whatwg/html/issues/2311. You can also contribute to the web standards by joining in the conversation and making your point in favor of this feature.
+Have you ever wondered why the `readonly` attribute doesn't work in `<select>` elements? Well, the whole thing is more complicated then one might think, but you can read all about it here: https://github.com/whatwg/html/issues/2311. You also could help advance the web standards by leaving a comment with why such feature would be useful to you.
 
 ## License
 
-This project is licensed under MIT. See [LICENSE.md](LICENSE.md) for full notice.
+The MIT License © 2013 Corenzan. See [LICENSE.md](LICENSE.md) for full notice.
