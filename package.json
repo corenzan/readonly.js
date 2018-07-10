@@ -1,0 +1,32 @@
+{
+  "name": "readonly-js",
+  "version": "3.0.0",
+  "description": "Make form controls - even <select> - read-only.",
+  "main": "readonly.js",
+  "scripts": {
+    "test": "echo 'Open test/index.html in your browser to check the test suite.'",
+    "build": "babel readonly.js --out-file dist/readonly.js",
+    "watch": "babel readonly.js --out-file dist/readonly.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corenzan/readonly.js.git"
+  },
+  "keywords": [
+    "form",
+    "select",
+    "readonly"
+  ],
+  "author": "Arthur Corenzan <arthur@corenzan.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/corenzan/readonly.js/issues"
+  },
+  "homepage": "https://github.com/corenzan/readonly.js#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
