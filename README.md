@@ -10,7 +10,6 @@
 
 If you're coming from older versions take note:
 
-- The `readonly` function no longer accepts a jQuery collection as first argument.
 - The control no longer gets a class added to it. You should use the attribute selector instead. e.g. `select[readonly] { ... }`
 - Now you can keep the actual control and its surrogate (formerly known as _sham_) in sync by dispatching a `change` event on the element. .e.g `input.dispatchEvent(new Event('change'))`. This will make sure that changes to `name` and/or `value` made via JavaScript will take effect.
 
