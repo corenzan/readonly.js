@@ -19,8 +19,27 @@ describe('readonly', () => {
     assert.isFunction(readonly);
   });
 
+  it('should accept a selector string', () => {
+    assert.doesNotThrow(() => readonly('input.non-existing'));
+  });
+
+  it('should accept an HTMLElement', () => {
+    assert.doesNotThrow(() => readonly(document.createElement('input')));
+  });
+
+  it('should accept an NodeList', () => {
+    const div = document.createElement('div');
+    div.appendChild(document.createElement('input'));
+    assert.doesNotThrow(() => readonly(div.querySelectorAll('input')));
+  });
+
+  it('should accept an Array of HTMLElement', () => {
+    assert.doesNotThrow(() => readonly([document.createElement('input')]));
+  });
+
   it('should whine about invalid arguments', () => {
     assert.throws(() => readonly(), /invalid argument/);
+    assert.throws(() => readonly(null), /invalid argument/);
     assert.throws(() => readonly(document.createElement('div')), /not allowed/);
   });
 
