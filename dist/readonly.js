@@ -99,7 +99,7 @@
       mixed = [].slice.call(mixed);
     } else if (mixed instanceof HTMLElement) {
       mixed = [mixed];
-    } else {
+    } else if (!mixed || !('forEach' in mixed)) {
       throw Error('readonly-js: invalid argument');
     }
 
