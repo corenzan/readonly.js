@@ -3,7 +3,6 @@
 // More on https://github.com/corenzan/readonly.js
 !function (root, undefined) {
   var typesThatNeedSurrogate = ['checkbox', 'range', 'radio'];
-
   var allowedNodeNames = ['INPUT', 'SELECT', 'TEXTAREA'];
 
   var isCheckable = function isCheckable(target) {
@@ -29,7 +28,6 @@
 
     surrogate.sync();
     target.addEventListener('change', surrogate.sync);
-
     target.surrogate = surrogate;
     target.parentElement.insertBefore(surrogate, target.nextElementSibling);
   };
@@ -56,7 +54,6 @@
 
     target.setAttribute('disabled', '');
     target.setAttribute('readonly', '');
-
     addSurrogate(target);
   };
 
@@ -76,7 +73,6 @@
 
     target.removeAttribute('disabled');
     target.removeAttribute('readonly');
-
     removeSurrogate(target);
   };
 
