@@ -51,4 +51,4 @@ Have you ever wondered why the `readonly` attribute doesn't work in `<select>` e
 
 ## License
 
-The MIT License © 2013 Corenzan. See [LICENSE.md](LICENSE.md) for full notice.
+The MIT License © 2013 Arthur Corenzan. See [LICENSE.md](LICENSE.md) for full notice.
