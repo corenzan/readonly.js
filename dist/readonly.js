@@ -1,4 +1,4 @@
-// Readonly.js $npm_package_version
+// Readonly.js 3.0.2
 // The MIT License © 2013 Arthur Corenzan
 // More on https://github.com/corenzan/readonly.js
 !function (root, undefined) {
