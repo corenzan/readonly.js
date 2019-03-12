@@ -4,9 +4,11 @@
   "description": "Make form controls - even <select> - read-only.",
   "main": "readonly.js",
   "scripts": {
-    "test": "echo 'Open test/index.html in your browser to check the test suite.'",
-    "build": "babel readonly.js --out-file dist/readonly.js",
-    "watch": "babel readonly.js --out-file dist/readonly.js --watch"
+    "test": "echo 'Open test/index.html in your browser to run the test suite' >&2; exit 1",
+    "watch": "npm run build -- --watch",
+    "build": "babel src/readonly.js --out-file dist/readonly.js",
+    "postbuild": "sed -i \"s/\\$npm_package_version/$npm_package_version/\" dist/readonly.js",
+    "version": "npm run build; git add dist/"
   },
   "repository": {
     "type": "git",
