@@ -116,7 +116,7 @@
         throw Error('readonly-js: element ' + target.nodeName + ' is not allowed');
       }
 
-      toggleReadOnly(target);
+      toggleReadOnly(target, value);
     });
   };
 
