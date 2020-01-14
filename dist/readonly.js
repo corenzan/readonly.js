@@ -110,10 +110,8 @@
 
   if ("jQuery" in root) {
     root.jQuery.fn.readonly = function (value) {
-      var _this = this;
-
-      return this.each(function () {
-        entryPoint(_this, value);
+      return this.each(function (_, element) {
+        entryPoint(element, value);
       });
     };
   }

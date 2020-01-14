@@ -121,8 +121,8 @@
 
   if ("jQuery" in root) {
     root.jQuery.fn.readonly = function(value) {
-      return this.each(() => {
-        entryPoint(this, value);
+      return this.each((_, element) => {
+        entryPoint(element, value);
       });
     };
   }
