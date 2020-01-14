@@ -1,6 +1,6 @@
 {
   "name": "readonly-js",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Make form controls - even <select> - read-only.",
   "main": "readonly.js",
   "scripts": {
