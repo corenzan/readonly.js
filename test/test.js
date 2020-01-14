@@ -166,4 +166,9 @@ describe("readonly", () => {
     assert.isFalse(radio2.hasAttribute("disabled"));
     assert.wouldBeSubmited(form, "radio", "radio2");
   });
+
+  it("should work with jQuery", () => {
+    const input = $('<input type="text">');
+    input.readonly();
+  });
 });
